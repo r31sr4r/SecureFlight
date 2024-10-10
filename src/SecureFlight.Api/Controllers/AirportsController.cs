@@ -39,6 +39,8 @@ public class AirportsController(
         airport.Country = airportDto.Country;
         airport.Name = airportDto.Name;
         var result = airportRepository.Update(airport);
+        await airportRepository.SaveChangesAsync();
+
         return MapResultToDataTransferObject<Airport, AirportDataTransferObject>(result);
     }
 }
